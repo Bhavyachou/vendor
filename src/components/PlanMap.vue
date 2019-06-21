@@ -23,7 +23,7 @@
 
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.utility" required
+                    v-model="sendData.utility"
                     :items="utilities"
                     reuired
                     label="Utility"
@@ -31,11 +31,11 @@
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select v-model="sendData.entity" :items="entities"required label="Entity" outline></v-select>
+                  <v-select v-model="sendData.entity" :items="entities" label="Entity" outline></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.city" required
+                    v-model="sendData.city"
                     @change="City()"
                     :items="cities"
                     label="City"
@@ -44,7 +44,7 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-select required
+                  <v-select
                     v-model="sendData.property"
                     :items="properties"
                     @change="PlanName"
@@ -54,18 +54,13 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.connectionid" required label="Connection ID" outline></v-text-field>
+                  <v-text-field v-model="sendData.connectionid" label="Connection ID" outline></v-text-field>
+                </v-flex>
+                <v-flex sm12 md6>
+                  <v-select v-model="sendData.plan" :items="plans" label="Choose a Plan" outline></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.plan" required
-                    :items="plans"
-                    label="Choose a Plan"
-                    outline
-                  ></v-select>
-                </v-flex>
-                <v-flex sm12 md6>
-                  <v-select required
                     v-model="sendData.association"
                     :items="associations"
                     label="Association Type"
@@ -73,90 +68,74 @@
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field required v-model="sendData.room" label="Room No. " outline></v-text-field>
+                  <v-text-field v-model="sendData.room" label="Room No. " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.flat" required label="Flat No. " outline></v-text-field>
+                  <v-text-field v-model="sendData.flat" label="Flat No. " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.floor" required label="Floor No. " outline></v-text-field>
+                  <v-text-field v-model="sendData.floor" label="Floor No. " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.common" required label="Common Area Description " outline></v-text-field>
+                  <v-text-field v-model="sendData.common" label="Common Area Description " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.entered" required label="Entered By " outline></v-text-field>
+                  <v-text-field v-model="sendData.entered" label="Entered By " outline></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
                   <v-menu
-                    ref="menu" 
-                    v-model="menu"
+                    v-model="menu3"
                     :close-on-content-click="false"
-                    :nudge-right="40"
-                    :return-value.sync="sendData.startdate"
-                    lazy
-                    transition="scale-transition"
-                    offset-y
                     full-width
-                    min-width="290px"
+                    max-width="290"
                   >
                     <template v-slot:activator="{ on }">
-                      <v-text-field required
-                        v-model="sendData.startdate"
-                        label="Plan start date"
+                      <v-text-field
+                        outline
+                        required
+                        :value="computedDateFormattedMomentjs"
+                        clearable
+                        label="Plan Start Date"
                         readonly
                         v-on="on"
-                        outline
                       ></v-text-field>
                     </template>
-                    <v-date-picker v-model="sendData.startdate" no-title scrollable>
-                      <v-spacer></v-spacer>
-                      <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
-                      <v-btn flat color="primary" @click="$refs.menu.save(startdate)">OK</v-btn>
-                    </v-date-picker>
+                    <v-date-picker v-model="date" @change="fun3"></v-date-picker>
                   </v-menu>
                 </v-flex>
 
                 <v-flex sm12 md6>
                   <v-menu
-                    ref="menu2"
                     v-model="menu2"
                     :close-on-content-click="false"
-                    :nudge-right="40"
-                    :return-value.sync="sendData.startdate"
-                    lazy
-                    transition="scale-transition"
-                    offset-y
                     full-width
-                    min-width="290px"
+                    max-width="290"
                   >
                     <template v-slot:activator="{ on }">
-                      <v-text-field required
-                        v-model="sendData.nextrecharge"
-                        label="Next Recharge date"
+                      <v-text-field
+                        outline
+                        required
+                        :value="computedDateFormattedMomentjs2"
+                        clearable
+                        label="Next Recharge Date"
                         readonly
                         v-on="on"
-                        outline
                       ></v-text-field>
                     </template>
-                    <v-date-picker v-model="sendData.nextrecharge" no-title scrollable>
-                      <v-spacer></v-spacer>
-                      <v-btn flat color="primary" @click="menu2 = false">Cancel</v-btn>
-                      <v-btn flat color="primary" @click="$refs.menu2.save(nextrecharge)">OK</v-btn>
-                    </v-date-picker>
+                    <v-date-picker v-model="rdate" @change="fun2"></v-date-picker>
                   </v-menu>
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field required v-model="sendData.amount" label="Recharge Amount" outline></v-text-field>
+                  <v-text-field v-model="sendData.amount" label="Recharge Amount" outline></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field required v-model="sendData.comment" label="Comments" outline></v-text-field>
+                  <v-text-field v-model="sendData.comment" label="Comments" outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select required v-model="sendData.mode" :items="modes" label="Recharge Mode" outline></v-select>
+                  <v-select v-model="sendData.mode" :items="modes" label="Recharge Mode" outline></v-select>
                 </v-flex>
                 <div class="text-xs-center">
                   <v-dialog width="500">
@@ -189,7 +168,8 @@ export default {
   Name: "PlanMap",
   data: () => ({
     baseURl: "http://3.218.108.144:4201/",
-    tabs:'',
+    tabs: "",
+
     sendData: {
       property: "",
       connectionid: "",
@@ -205,20 +185,23 @@ export default {
       flat: "",
       floor: "",
       common: "",
-      startdate: "",
-      nextrecharge: "",
+      date: "",
+      rdate: "",
       comment: "",
       city: ""
     },
-    startdate: new Date().toISOString().substr(0, 10),
-    nextrecharge: new Date().toISOString().substr(0, 10),
-    menu: false,
     menu2: false,
+    menu3: false,
+    fetchDate: "",
+    fetchDate2: "",
+    date: new Date().toISOString().substr(0, 10),
+    rdate: new Date().toISOString().substr(0, 10),
+
     plans: [],
     utilities: ["Dth", "Internet"],
     properties: [],
     cities: [],
-    entities: ["Kitchen", "Office", "Property"],
+    entities: ["Kitchen", "Office", "Home"],
     modes: ["app", "credit card"],
     tabs: "",
     associations: [
@@ -229,6 +212,7 @@ export default {
       "Property common area"
     ]
   }),
+
   methods: {
     async getData() {
       console.log("sendData", this.sendData);
@@ -249,7 +233,6 @@ export default {
       });
     },
 
-
     PlanName() {
       console.log("hi");
       axios.get(this.baseURl + "planonboard/getpname").then(response => {
@@ -265,11 +248,32 @@ export default {
 
         // console.log("Vname", this.);
       });
+    },
+    fun3() {
+      this.menu3 = false;
+      this.fetchDate = this.date;
+      this.fetchDate = moment(this.date, "YYYY-MM-DD").format("DD/MM/YYYY");
+      console.log(this.fetchDate);
+      console.log(this.date);
+    },
+    fun2() {
+      this.menu2 = false;
+      this.fetchDate2 = this.rdate;
+      this.fetchDate2 = moment(this.date, "YYYY-MM-DD").format("DD/MM/YYYY");
+      console.log(this.fetchDate2);
+      console.log(this.rdate);
     }
   },
-   mounted(){
+  computed: {
+    computedDateFormattedMomentjs() {
+      return this.date ? moment(this.date).format("DD/MM/YYYY") : "";
+    },
+    computedDateFormattedMomentjs2() {
+      return this.rdate ? moment(this.rdate).format("DD/MM/YYYY") : "";
+    }
+  },
+  mounted() {
     this.City();
-    
   }
 };
 </script>
