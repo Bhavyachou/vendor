@@ -23,7 +23,7 @@
 
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.utility"
+                    v-model="sendData.utility" required
                     :items="utilities"
                     reuired
                     label="Utility"
@@ -31,11 +31,11 @@
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select v-model="sendData.entity" :items="entities" label="Entity" outline></v-select>
+                  <v-select v-model="sendData.entity" :items="entities"required label="Entity" outline></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.city"
+                    v-model="sendData.city" required
                     @change="City()"
                     :items="cities"
                     label="City"
@@ -44,7 +44,7 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-select
+                  <v-select required
                     v-model="sendData.property"
                     :items="properties"
                     @change="PlanName"
@@ -54,18 +54,18 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.connectionid" label="Connection ID" outline></v-text-field>
+                  <v-text-field v-model="sendData.connectionid" required label="Connection ID" outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.plan"
+                    v-model="sendData.plan" required
                     :items="plans"
                     label="Choose a Plan"
                     outline
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select
+                  <v-select required
                     v-model="sendData.association"
                     :items="associations"
                     label="Association Type"
@@ -73,24 +73,24 @@
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.room" label="Room No. " outline></v-text-field>
+                  <v-text-field required v-model="sendData.room" label="Room No. " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.flat" label="Flat No. " outline></v-text-field>
+                  <v-text-field v-model="sendData.flat" required label="Flat No. " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.floor" label="Floor No. " outline></v-text-field>
+                  <v-text-field v-model="sendData.floor" required label="Floor No. " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.common" label="Common Area Description " outline></v-text-field>
+                  <v-text-field v-model="sendData.common" required label="Common Area Description " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.entered" label="Entered By " outline></v-text-field>
+                  <v-text-field v-model="sendData.entered" required label="Entered By " outline></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
                   <v-menu
-                    ref="menu"
+                    ref="menu" 
                     v-model="menu"
                     :close-on-content-click="false"
                     :nudge-right="40"
@@ -102,7 +102,7 @@
                     min-width="290px"
                   >
                     <template v-slot:activator="{ on }">
-                      <v-text-field
+                      <v-text-field required
                         v-model="sendData.startdate"
                         label="Plan start date"
                         readonly
@@ -132,7 +132,7 @@
                     min-width="290px"
                   >
                     <template v-slot:activator="{ on }">
-                      <v-text-field
+                      <v-text-field required
                         v-model="sendData.nextrecharge"
                         label="Next Recharge date"
                         readonly
@@ -149,14 +149,14 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.amount" label="Recharge Amount" outline></v-text-field>
+                  <v-text-field required v-model="sendData.amount" label="Recharge Amount" outline></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.comment" label="Comments" outline></v-text-field>
+                  <v-text-field required v-model="sendData.comment" label="Comments" outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select v-model="sendData.mode" :items="modes" label="Recharge Mode" outline></v-select>
+                  <v-select required v-model="sendData.mode" :items="modes" label="Recharge Mode" outline></v-select>
                 </v-flex>
                 <div class="text-xs-center">
                   <v-dialog width="500">
@@ -218,7 +218,7 @@ export default {
     utilities: ["Dth", "Internet"],
     properties: [],
     cities: [],
-    entities: ["Kitchen", "Office", "Home"],
+    entities: ["Kitchen", "Office", "Property"],
     modes: ["app", "credit card"],
     tabs: "",
     associations: [
