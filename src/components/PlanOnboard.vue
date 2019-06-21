@@ -196,9 +196,9 @@ export default {
   },
   computed: {
     isDisabled() {
-      if(this.sendData.utility === 'dth'){
+      if(this.sendData.utility === 'Dth'){
       return this.isDis;}
-      else if(this.sendData.utility === 'internet')
+      else if(this.sendData.utility === 'Internet')
       {this.isDis = true }
     }
   },
