@@ -115,7 +115,7 @@ import axios from "axios";
 export default {
   Name: "VendorOnboard",
   data: () => ({
-    baseURl: "http://localhost:3000/",
+    baseURl: "http://3.218.108.144:4201/",
     rowNum: 0,
     tabs: '',
     Lastvid: 0,

@@ -188,7 +188,7 @@ import axios from "axios";
 export default {
   Name: "PlanMap",
   data: () => ({
-    baseURl: "http://localhost:3000/",
+    baseURl: "http://3.218.108.144:4201/",
     tabs:'',
     sendData: {
       property: "",

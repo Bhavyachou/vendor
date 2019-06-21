@@ -117,7 +117,7 @@ createTableBasicAPI("Centers");
 createTableBasicAPI("planMap");
 createTableBasicAPI("planonboard");
 createTableBasicAPI("vendor");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4201;
 console.log('server running at', PORT);
 app.listen(PORT);
 
