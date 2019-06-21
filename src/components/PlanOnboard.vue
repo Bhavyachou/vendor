@@ -22,7 +22,7 @@
                 </v-tabs>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.utility"
+                    v-model="sendData.utility" required
                     :items="utilities"
                     reuired
                     label="Utility"
@@ -31,29 +31,29 @@
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select 
-                    @change="VendorName" v-model="sendData.city" :items="cities" reuired label="City" outline></v-select>
+                    @change="VendorName" required v-model="sendData.city" :items="cities" reuired label="City" outline></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.vendor"
+                    v-model="sendData.vendor" required
                     :items="vendors"
                     label="Vendor Name"
                     outline
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.pName" label="Plan Name " outline></v-text-field>
+                  <v-text-field required v-model="sendData.pName" label="Plan Name " outline></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.pDes" label="Plan Description" outline></v-text-field>
+                  <v-text-field required v-model="sendData.pDes" label="Plan Description" outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.rate" label="Rate " outline></v-text-field>
+                  <v-text-field required v-model="sendData.rate" label="Rate " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.validity"
+                    v-model="sendData.validity" required
                     :items="validities"
                     label="Validity"
                     outline
@@ -61,10 +61,10 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.package" label="Package Details " outline></v-text-field>
+                  <v-text-field  required v-model="sendData.package" label="Package Details " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.upload" label="Upload Limit " suffix="GB" :disabled='isDisabled' outline></v-text-field>
+                  <v-text-field  v-model="sendData.upload" label="Upload Limit " suffix="GB" :disabled='isDisabled' outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-text-field :disabled="isDisabled"
