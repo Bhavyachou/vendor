@@ -37,6 +37,10 @@ const query = sqlStatement =>
     });
   });
 
+  const staticFileMiddleware = express.static("dist");
+
+  // 1st call for unredirected requests
+  app.use(staticFileMiddleware);
   
 app.use(
   cors({
