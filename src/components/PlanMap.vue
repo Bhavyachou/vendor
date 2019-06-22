@@ -217,7 +217,8 @@ export default {
     async getData() {
       console.log("sendData", this.sendData);
 
-
+this.sendData.date = this.fetchDate;
+      this.sendData.rdate = this.fetchDate2;
       axios.post(this.baseURl + "planMap/insert", this.sendData);
     },
 
