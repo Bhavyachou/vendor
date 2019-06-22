@@ -22,7 +22,7 @@
                 </v-tabs>
                 <v-flex sm12 md3>
                   <v-select
-                    v-model="sendData.usercity" required
+                    v-model="sendData.usercity" :rules="['Required']" 
                     :items="cities"
                     required
                     label="City"
@@ -31,7 +31,7 @@
                 </v-flex>
                 <v-flex sm12 md3>
                   <v-select
-                    v-model="sendData.utility" required
+                    v-model="sendData.utility" :rules="['Required']" 
                     :items="utilities"
                     reuired
                     label="Utility"
@@ -39,22 +39,22 @@
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md3>
-                  <v-text-field v-model="sendData.vendor" required label="Vendor Name " outline></v-text-field>
+                  <v-text-field v-model="sendData.vendor" :rules="['Required']"  label="Vendor Name " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md3>
-                  <v-text-field v-model="sendData.contact" required label="Contact Person Name " outline></v-text-field>
+                  <v-text-field v-model="sendData.contact" :rules="['Required']"  label="Contact Person Name " outline></v-text-field>
                 </v-flex>
                 <v-layout row wrap>
                   <v-flex sm12 md6>
-                    <v-text-field v-model="sendData.phone" required label="Phone No" outline></v-text-field>
+                    <v-text-field v-model="sendData.phone" :rules="['Required']"  label="Phone No" outline></v-text-field>
                   </v-flex>
                   <v-flex sm12 md6>
-                    <v-text-field v-model="sendData.altphone" label="Alternate No " outline></v-text-field>
+                    <v-text-field v-model="sendData.altphone":rules="['Required']"  label="Alternate No " outline></v-text-field>
                   </v-flex>
                 </v-layout>
                 <v-layout row wrap>
                   <v-flex sm12 md6>
-                    <v-text-field v-model="sendData.email" required label="Email " outline></v-text-field>
+                    <v-text-field v-model="sendData.email" :rules="['Required']"  label="Email " outline></v-text-field>
                   </v-flex>
                   <v-flex sm12 md6>
                     <v-text-field v-model="sendData.altemail" label="Alternate Email " outline></v-text-field>
@@ -69,16 +69,16 @@
                         </td>
                         <td>{{ props.item.type }}</td>
                         <td>
-                          <v-text-field required v-model="props.item.formName[item1-1]" label="Name"></v-text-field>
+                          <v-text-field :rules="['Required']"  v-model="props.item.formName[item1-1]" label="Name"></v-text-field>
                         </td>
                         <td>
-                          <v-text-field required v-model="props.item.formType[item1-1]" label="Type"></v-text-field>
+                          <v-text-field  :rules="['Required']"  v-model="props.item.formType[item1-1]" label="Type"></v-text-field>
                         </td>
                         <td>
-                          <v-text-field required v-model="props.item.formPhone[item1-1]" label="Phone"></v-text-field>
+                          <v-text-field  :rules="['Required']"  v-model="props.item.formPhone[item1-1]" label="Phone"></v-text-field>
                         </td>
                         <td>
-                          <v-text-field required v-model="props.item.formEmail[item1-1]" label="Email"></v-text-field>
+                          <v-text-field :rules="['Required']"  v-model="props.item.formEmail[item1-1]" label="Email"></v-text-field>
                         </td>
                       </tr>
                       <v-btn color="primary" @click="incRow">Add</v-btn>
@@ -118,6 +118,7 @@ export default {
     baseURl: "http://3.218.108.144:4201/",
     rowNum: 0,
     tabs: '',
+    required:[],
     Lastvid: 0,
     sendData: {
       usercity: "",
