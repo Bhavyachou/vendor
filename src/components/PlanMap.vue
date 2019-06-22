@@ -44,13 +44,13 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-select
+                  <v-combobox
                     v-model="sendData.property"
                     :items="properties"
                     @change="PlanName"
                     label="Property Name"
                     outline
-                  ></v-select>
+                  ></v-combobox>
                 </v-flex>
 
                 <v-flex sm12 md6>
