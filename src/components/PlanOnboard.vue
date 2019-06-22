@@ -22,7 +22,7 @@
                 </v-tabs>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.utility" required
+                    v-model="sendData.utility" :rules="['Required']" 
                     :items="utilities"
                     reuired
                     label="Utility"
@@ -31,29 +31,29 @@
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select 
-                    @change="VendorName" required v-model="sendData.city" :items="cities" reuired label="City" outline></v-select>
+                    @change="VendorName" :rules="['Required']"  v-model="sendData.city" :items="cities" reuired label="City" outline></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.vendor" required
+                    v-model="sendData.vendor" :rules="['Required']" 
                     :items="vendors"
                     label="Vendor Name"
                     outline
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field required v-model="sendData.pName" label="Plan Name " outline></v-text-field>
+                  <v-text-field :rules="['Required']"  v-model="sendData.pName" label="Plan Name " outline></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field required v-model="sendData.pDes" label="Plan Description" outline></v-text-field>
+                  <v-text-field :rules="['Required']"  v-model="sendData.pDes" label="Plan Description" outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field required v-model="sendData.rate" label="Rate " outline></v-text-field>
+                  <v-text-field :rules="['Required']"  v-model="sendData.rate" label="Rate " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.validity" required
+                    v-model="sendData.validity" :rules="['Required']" 
                     :items="validities"
                     label="Validity"
                     outline
@@ -61,13 +61,13 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field  required v-model="sendData.package" label="Package Details " outline></v-text-field>
+                  <v-text-field  :rules="['Required']"  v-model="sendData.package" label="Package Details " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field  v-model="sendData.upload" label="Upload Limit " suffix="GB" :disabled='isDisabled' outline></v-text-field>
+                  <v-text-field  v-model="sendData.upload" :rules="['Required']"  label="Upload Limit " suffix="GB" :disabled='isDisabled' outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field :disabled="isDisabled"
+                  <v-text-field :disabled="isDisabled" :rules="['Required']" 
                     v-model="sendData.download"
                     label="Download Limit "
                     suffix="GB"
@@ -75,10 +75,10 @@
                   ></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.channels" :disabled='!isDisabled' label="No. of Channels" outline></v-text-field>
+                  <v-text-field v-model="sendData.channels" :rules="['Required']"  :disabled='!isDisabled' label="No. of Channels" outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-card-text :hidden='!isDisabled'>
+                  <v-card-text :hidden='!isDisabled' :rules="['Required']" >
                     Choice of Channels
                     <v-checkbox v-model="sendData.choice" label="English" value="English"></v-checkbox>
                     <v-checkbox v-model="sendData.choice" label="Hindi" value="Hindi"></v-checkbox>
@@ -124,6 +124,7 @@ export default {
     baseURl: "http://3.218.108.144:4201/",
     isDis: true,
     tabs: '',
+    required:[],
     sendData: {
       utility: "",
       city: "",
