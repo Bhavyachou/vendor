@@ -259,7 +259,7 @@ export default {
     fun2() {
       this.menu2 = false;
       this.fetchDate2 = this.rdate;
-      this.fetchDate2 = moment(this.date, "YYYY-MM-DD").format("DD/MM/YYYY");
+      this.fetchDate2 = moment(this.rdate, "YYYY-MM-DD").format("DD/MM/YYYY");
       console.log(this.fetchDate2);
       console.log(this.rdate);
     }
