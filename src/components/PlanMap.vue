@@ -202,7 +202,7 @@ export default {
     properties: [],
     cities: [],
     entities: ["Kitchen", "Office", "Home"],
-    modes: ["app", "credit card"],
+    modes: ["app", "credit card", "online"],
     tabs: "",
     associations: [
       "Property",
