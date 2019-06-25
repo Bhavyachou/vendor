@@ -24,14 +24,13 @@
                   <v-select
                     v-model="sendData.utility" :rules="['Required']" 
                     :items="utilities"
-                    reuired
                     label="Utility"
                     outline
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select 
-                    @change="VendorName" :rules="['Required']"  v-model="sendData.city" :items="cities" reuired label="City" outline></v-select>
+                    @change="VendorName" :rules="['Required']"  v-model="sendData.city" :items="cities" label="City" outline></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
                   <v-select
@@ -64,10 +63,10 @@
                   <v-text-field  :rules="['Required']"  v-model="sendData.package" label="Package Details " outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field  v-model="sendData.upload" :rules="['Required']"  label="Upload Limit " suffix="GB" :disabled='isDisabled' outline></v-text-field>
+                  <v-text-field  v-model="sendData.upload"   label="Upload Limit " suffix="GB" :disabled='isDisabled' outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field :disabled="isDisabled" :rules="['Required']" 
+                  <v-text-field :disabled="isDisabled" 
                     v-model="sendData.download"
                     label="Download Limit "
                     suffix="GB"
@@ -75,10 +74,10 @@
                   ></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.channels" :rules="['Required']"  :disabled='!isDisabled' label="No. of Channels" outline></v-text-field>
+                  <v-text-field v-model="sendData.channels"  :disabled='!isDisabled' label="No. of Channels" outline></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-card-text :hidden='!isDisabled' :rules="['Required']" >
+                  <v-card-text :hidden='!isDisabled' >
                     Choice of Channels
                     <v-checkbox v-model="sendData.choice" label="English" value="English"></v-checkbox>
                     <v-checkbox v-model="sendData.choice" label="Hindi" value="Hindi"></v-checkbox>
