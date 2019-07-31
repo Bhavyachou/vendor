@@ -23,20 +23,28 @@
 
                 <v-flex sm12 md6>
                   <v-select
-                    v-model="sendData.utility" :rules="['Required']" 
+                    v-model="sendData.utility"
                     :items="utilities"
-                    reuired
+                    required="true"
+                    :rules="['Required']"
                     label="Utility"
                     outline
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select v-model="sendData.entity" :rules="['Required']"  :items="entities" label="Entity" outline></v-select>
+                  <v-select
+                    v-model="sendData.entity"
+                    :rules="['Required']"
+                    :items="entities"
+                    label="Entity"
+                    outline
+                  ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select :rules="['Required']" 
+                  <v-select
                     v-model="sendData.city"
-                    @change="City()"
+                    @change="Property()"
+                    :rules="['Required']"
                     :items="cities"
                     label="City"
                     outline
@@ -44,43 +52,85 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-combobox :rules="['Required']" 
+                  <v-combobox
                     v-model="sendData.property"
                     :items="properties"
-                    @change="PlanName"
+                    @change="PlanName(); Floor();"
+                    :rules="['Required']"
                     label="Property Name"
                     outline
                   ></v-combobox>
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.connectionid" :rules="['Required']"  label="Connection ID" outline></v-text-field>
+                  <v-text-field
+                    v-model="sendData.connectionid"
+                    :rules="['Required']"
+                    label="Connection ID"
+                    outline
+                  ></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select v-model="sendData.plan" :rules="['Required']"  :items="plans" label="Choose a Plan" outline></v-select>
+                  <v-select
+                    v-model="sendData.plan"
+                    :rules="['Required']"
+                    :items="plans"
+                    label="Choose a Plan"
+                    outline
+                  ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select :rules="['Required']" 
+                  <v-select
                     v-model="sendData.association"
                     :items="associations"
+                    :rules="['Required']"
                     label="Association Type"
                     outline
                   ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.room" :rules="['Required']"  label="Room No. " outline></v-text-field>
+                  <v-select
+                    v-model="sendData.floor"
+                    @change="Flat(); Room();"
+                    :items="floors"
+                    :rules="['Required']"
+                    label="Floor No. "
+                    outline
+                  ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.flat" label="Flat No. " :rules="['Required']"  outline></v-text-field>
+                  <v-select
+                    v-model="sendData.flat"
+                    :items="flats"
+                    :rules="['Required']"
+                    label="Flat No. "
+                    outline
+                  ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.floor" label="Floor No. " :rules="['Required']"  outline></v-text-field>
+                  <v-select
+                    v-model="sendData.room"
+                    :items="rooms"
+                    label="Room No. "
+                    :rules="['Required']"
+                    outline
+                  ></v-select>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.common" label="Common Area Description " :rules="['Required']"  outline></v-text-field>
+                  <v-text-field
+                    v-model="sendData.common"
+                    label="Common Area Description "
+                    :rules="['Required']"
+                    outline
+                  ></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.entered" label="Entered By " :rules="['Required']"  outline></v-text-field>
+                  <v-text-field
+                    v-model="sendData.entered"
+                    label="Entered By "
+                    outline
+                    :rules="['Required']"
+                  ></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
@@ -93,11 +143,12 @@
                     <template v-slot:activator="{ on }">
                       <v-text-field
                         outline
-                        :rules="['Required']" 
+                        required
                         :value="computedDateFormattedMomentjs"
                         clearable
                         label="Plan Start Date"
                         readonly
+                        :rules="['Required']"
                         v-on="on"
                       ></v-text-field>
                     </template>
@@ -115,11 +166,12 @@
                     <template v-slot:activator="{ on }">
                       <v-text-field
                         outline
-                        :rules="['Required']" 
+                        required
                         :value="computedDateFormattedMomentjs2"
                         clearable
                         label="Next Recharge Date"
                         readonly
+                        :rules="['Required']"
                         v-on="on"
                       ></v-text-field>
                     </template>
@@ -128,28 +180,36 @@
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.amount" :rules="['Required']"  label="Recharge Amount" outline></v-text-field>
+                  <v-text-field
+                    v-model="sendData.amount"
+                    :rules="['Required']"
+                    label="Recharge Amount"
+                    outline
+                  ></v-text-field>
                 </v-flex>
 
                 <v-flex sm12 md6>
-                  <v-text-field v-model="sendData.comment" :rules="['Required']"  label="Comments" outline></v-text-field>
+                  <v-text-field
+                    v-model="sendData.comment"
+                    :rules="['Required']"
+                    label="Comments"
+                    outline
+                  ></v-text-field>
                 </v-flex>
                 <v-flex sm12 md6>
-                  <v-select v-model="sendData.mode" :rules="['Required']"  :items="modes" label="Recharge Mode" outline></v-select>
+                  <v-select
+                    v-model="sendData.mode"
+                    :rules="['Required']"
+                    :items="modes"
+                    label="Recharge Mode"
+                    outline
+                  ></v-select>
                 </v-flex>
                 <div class="text-xs-center">
                   <v-dialog width="500">
                     <template v-slot:activator="{ on }">
                       <v-btn @click="getData" color="Green" dark v-on="on">Submit</v-btn>
                     </template>
-
-                    <v-card>
-                      <v-card-title class="headline grey lighten-2" primary-title>Successful!</v-card-title>
-
-                      <v-card-text>Data is successfully submitted!</v-card-text>
-
-                      <v-divider></v-divider>
-                    </v-card>
                   </v-dialog>
                 </div>
               </v-layout>
@@ -169,7 +229,9 @@ export default {
   data: () => ({
     baseURl: "http://3.218.108.144:4201/",
     tabs: "",
-    required:[],
+    token:"",
+    required: [],
+    error: "",
     sendData: {
       property: "",
       connectionid: "",
@@ -185,7 +247,6 @@ export default {
       flat: "",
       floor: "",
       common: "",
-      date: "",
       rdate: "",
       comment: "",
       city: ""
@@ -196,13 +257,15 @@ export default {
     fetchDate2: "",
     date: new Date().toISOString().substr(0, 10),
     rdate: new Date().toISOString().substr(0, 10),
-
+    floors: [],
+    flats: [],
+    rooms: [],
     plans: [],
     utilities: ["Dth", "Internet"],
     properties: [],
     cities: [],
-    entities: ["Kitchen", "Office", "Home"],
-    modes: ["app", "credit card", "online"],
+    entities: ["Kitchen", "Office", "Property"],
+    modes: ["App", "Credit card", "Online Mode"],
     tabs: "",
     associations: [
       "Property",
@@ -217,16 +280,31 @@ export default {
     async getData() {
       console.log("sendData", this.sendData);
 
-this.sendData.date = this.fetchDate;
+      this.sendData.date = this.fetchDate;
       this.sendData.rdate = this.fetchDate2;
-      axios.post(this.baseURl + "planMap/insert", this.sendData);
+
+      await axios.post(this.baseURl + "planMap/insert", this.sendData);
     },
 
     City() {
       axios.get(this.baseURl + "Centers/getcityname").then(response => {
         response.data.forEach(element => {
           this.cities.push(element.CITY);
-          this.properties.push(element.LOCALNAME);
+        });
+
+        // console.log("Vname", this.);
+      });
+    },
+    Property() {
+      console.log("hi");
+      axios.get(this.baseURl + "Centers/getcityname").then(response => {
+        response.data.forEach(element => {
+          if (
+            this.sendData.city === element.CITY &&
+            this.sendData.entity === element.Type
+          ) {
+            this.properties.push(element.LOCALNAME);
+          }
         });
 
         // console.log("Vname", this.);
@@ -234,7 +312,6 @@ this.sendData.date = this.fetchDate;
     },
 
     PlanName() {
-      console.log("hi");
       axios.get(this.baseURl + "planonboard/getpname").then(response => {
         console.log("hi", response.data);
         response.data.forEach(element => {
@@ -247,6 +324,116 @@ this.sendData.date = this.fetchDate;
         });
 
         // console.log("Vname", this.);
+      });
+    },
+    Login() {
+      axios({
+        method: "POST",
+        url:
+          "https://stageapi.zolostays.com/crm/v2/suppliers/login?primaryContact=8764008842&passwd=bhavya123"
+      }).then(response => {
+        console.log("response", response.data.result[0].token);
+         this.token = response.data.result[0].token
+      });
+     
+    },
+
+    Floor() {
+      console.log('get token',this.token);
+      axios.get(this.baseURl + "Centers/getcityname").then(response => {
+        response.data.forEach(element => {
+          if (this.sendData.property === element.LOCALNAME) {
+            var centerId = element.CENTER_ID;
+            
+            axios({
+              method: "GET",
+              url:
+                "https://stageapi.zolostays.com/crm/api/v1/center/" +
+                centerId +
+                "/housekeeping?token=" + this.token
+            }).then(response => {
+              console.log("meow", response);
+              console.log(
+                "meow",
+                response.data.result[0].floors[0].flats[0].rooms
+              );
+              for (var i = 0; i < response.data.result[0].floors.length; i++) {
+                this.floors.push(response.data.result[0].floors[i].name);
+              }
+
+              // console.log("Vname", this.);
+            });
+          }
+        });
+      });
+    },
+
+    Flat() {
+      axios.get(this.baseURl + "Centers/getcityname").then(response => {
+        response.data.forEach(element => {
+          if (this.sendData.property === element.LOCALNAME) {
+            var centerId = element.CENTER_ID;
+            axios({
+              method: "GET",
+              url:
+                "https://stageapi.zolostays.com/crm/api/v1/center/" +
+                centerId +
+                "/housekeeping?token=" + this.token
+            }).then(response => {
+              response.data.result[0].floors.forEach((element, index) => {
+                if (
+                  this.sendData.floor === element.name &&
+                  element.flats[0].isFlatType === true
+                ) {
+                  console.log("element", element);
+                  element.flats.forEach((ele, ind) => {
+                    console.log("ele", ele);
+                    ele.rooms.forEach((ele1, ind1) => {
+                      console.log("ele1", ele1);
+                      this.flats.push(ele1.roomName);
+                    });
+                  });
+                }
+              });
+
+              // console.log("Vname", this.);
+            });
+          }
+        });
+      });
+    },
+    Room() {
+      axios.get(this.baseURl + "Centers/getcityname").then(response => {
+        response.data.forEach(element => {
+          if (this.sendData.property === element.LOCALNAME) {
+            var centerId = element.CENTER_ID;
+            axios({
+              method: "GET",
+              url:
+                "https://stageapi.zolostays.com/crm/api/v1/center/" +
+                centerId +
+                "/housekeeping?token=" + this.token
+            }).then(response => {
+              response.data.result[0].floors.forEach((element, index) => {
+                if (
+                  this.sendData.floor === element.name &&
+                  element.flats[0].isFlatType === false
+                ) {
+                  console.log("element", element);
+                  element.flats.forEach((ele, ind) => {
+                    console.log("ele", ele);
+                    ele.rooms.forEach((ele1, ind1) => {
+                      console.log("ele1", ele1);
+                      this.rooms.push(ele1.roomName);
+                    });
+                  });
+                }
+              });
+
+              // console.log("Vname", this.);
+            });
+          }
+        });
       });
     },
     fun3() {
@@ -274,6 +461,7 @@ this.sendData.date = this.fetchDate;
   },
   mounted() {
     this.City();
+    this.Login();
   }
 };
 </script>
